@@ -1,6 +1,6 @@
 [project]
 name = "mlflow-duckdb"
-version = "0.1.0"
+version = "0.1.1"
 description = "An MLflow plugin that integrates DuckDB as a backend for artifact and model tracking, enabling efficient, serverless experiment management with a lightweight, portable database engine."
 authors = [
     {name = "Hugo Carvalho",email = "hugodanielsilvacarvalho.hc@gmail.com"}
