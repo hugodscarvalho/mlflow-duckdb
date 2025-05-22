@@ -1,0 +1,103 @@
+[project]
+name = "mlflow-duckdb"
+version = "0.1.0"
+description = "An MLflow plugin that integrates DuckDB as a backend for artifact and model tracking, enabling efficient, serverless experiment management with a lightweight, portable database engine."
+authors = [
+    {name = "Hugo Carvalho",email = "hugodanielsilvacarvalho.hc@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "mlflow (>2.0.1)",
+    "duckdb (>1.0.0)",
+]
+
+[tool.poetry]
+packages = [{include = "mlflow_duckdb", from = "src"}]
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+ruff = "^0.11.10"
+pytest-cov = "^6.1.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+preview = true
+line-length = 88
+target-version = "py311"
+fix = true  # Enable autofix mode when using `ruff check --fix`
+show-fixes = true # Show fixes that would be applied
+
+[tool.ruff.lint]
+ignore = [
+  "E501",  # Line too long (leave to Black)
+  "D203",  # Ignore incorrect-blank-line-before-class
+  "D213",  # Ignore multi-line-summary-second-line
+  "S404",   # Insecure module import
+  "S607",   # Starting process with a partial path
+  "S603",   # Executing subprocess with shell=True
+  "BLE001", # Blind except
+]
+select = [
+    "D",    # Pydocstyle
+    "E",    # Pycodestyle Errors
+    "F",    # PyFlakes
+    "W",    # Pycodestyle Warnings
+    "C90",  # McCabe
+    "U",    # Unused
+    "ASYNC",# flake8-async
+    "T20",  # flake8-print
+    "COM",  # flake8-commas
+    "EM",   # flake8-errmsg
+    "ISC",  # flake8-implicit-str-concat
+    "PIE",  # flake8-pie
+    "PT",   # flake8-pytest-style
+    "SIM",  # flake8-simplify
+    "TID",  # flake8-tidy-imports
+    "ARG",  # flake8-unused-arguments
+    "BLE",  # flake8-blind-except
+    "B",    # flake8-bugbear
+    "S",    # flake8-bandit (enable specific S rules as needed)
+    "C",    # pylint (style checks)
+    "N",    # pep8-naming
+    "PGH",  # pep8-naming
+    "ERA",  # eradicate
+    "PD",   # pandas-vet (if applicable)
+    "RSE",  # flake8-raise
+    "RET",  # flake8-return
+    "RUF",  # Ruff-specific rules
+    "SLF",  # flake8-self
+    "FURB", # refurb
+]
+
+# Exclude some common directories
+exclude = [
+  ".venv",
+  "build",
+  "dist",
+  ".git",
+  "__pycache__",
+  "migrations",
+]
+
+# Optional: Per-file rule overrides (e.g., disable print checks in scripts)
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S108", "ARG001", "ARG002", "ARG005", "PT004"] # Ignore specific rules in tests
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+filterwarnings = [
+  "ignore:Failure attempting to register context provider:UserWarning",
+  "ignore::pydantic.warnings.PydanticDeprecatedSince20"
+]
+markers = [
+  "unit: marks unit tests (fast, no external dependencies)",
+  "integration: marks integration tests (requires MLflow server)"
+]
