@@ -1,4 +1,4 @@
-"""Integration test configuration for mlflow-sysmetrics.
+"""Integration test configuration for mlflow-duckdb.
 
 This module provides shared fixtures and utilities for integration tests,
 including a health check to ensure the MLflow Tracking Server is running

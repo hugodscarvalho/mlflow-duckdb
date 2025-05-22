@@ -4,6 +4,11 @@ All notable changes to the `mlflow-duckdb` package will be documented in this fi
 
 This project adheres to [Semantic Versioning](https://semver.org/) and follows changelog conventions inspired by [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [v0.1.3] – 2025-05-22
+
+### Added
+- Expanded the test suite with additional dummy tests to improve baseline coverage and validate project structure.
+
 ## [v0.1.1] – 2025-05-22
 
 ### Fixed
