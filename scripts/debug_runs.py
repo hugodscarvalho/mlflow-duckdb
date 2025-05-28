@@ -1,5 +1,8 @@
-"""Generate synthetic experiments, runs, and dataset inputs for MLflow DuckDB tracking store."""
+"""Generate synthetic data for the MLflow DuckDB tracking store.
 
+This includes synthetic experiments, runs, and dataset inputs for testing or
+development purposes.
+"""
 import mlflow
 import time
 import random

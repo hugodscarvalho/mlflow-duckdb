@@ -41,4 +41,10 @@ def check_mlflow_server() -> None:
     """
     uri: str = os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5000")
     if not is_mlflow_server_up(uri):
-        pytest.skip(f"Skipping integration tests — no MLflow server running at {uri}", allow_module_level=True)
+        pytest.skip(
+            reason=(
+                "Skipping integration tests — no MLflow server running at "
+                f"{uri}"
+            ),
+            allow_module_level=True,
+        )

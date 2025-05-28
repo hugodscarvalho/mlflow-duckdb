@@ -181,3 +181,6 @@ mlruns/
 
 # VS Code
 .vscode/
+
+# DS Store files
+.DS_Store
